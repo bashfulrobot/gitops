@@ -1,0 +1,54 @@
+# Docs
+# ---- https://github.com/casey/just
+# ---- https://stackabuse.com/how-to-change-the-output-color-of-echo-in-linux/
+# ---- https://cheatography.com/linux-china/cheat-sheets/justfile/
+# load a .env file if in the directory
+set dotenv-load
+# Ignore recipe lines beginning with #.
+set ignore-comments
+# Search justfile in parent directory if the first recipe on the command line is not found.
+set fallback
+
+# "_" hides the recipie from listings
+_default:
+    @just --list --list-prefix ····
+# _default:
+#     @just --choose
+# _sway-reload:
+#     @case $(hostname) in \
+#         dustin-krysak|rembot) \
+#             swaymsg reload; \
+#             echo "Sway reloaded...";; \
+#         *) \
+#             echo "Skipping sway reload...";; \
+#     esac
+
+# Print `just` help
+help:
+    @just --help
+# # Print your hostname
+# host:
+#     @echo `hostname`
+# # Print your user name
+# user:
+#     @echo {{env_var('USER')}}
+# # Print your homedir
+# home:
+#     @echo {{env_var('HOME')}}
+# # Print the directory where the justfile is located
+# root:
+#     @echo {{justfile_directory()}}
+# Bootstrap FluxCD
+flux *ARGS:
+    @echo "be sure to run with the cluster name passed in."
+    @flux bootstrap github --token-auth=false --owner=bashfulrobot --repository=gitops --branch=main --path=clusters/{{ ARGS }} --read-write-key=true --components-extra='image-reflector-controller,image-automation-controller'
+    # @just _sway-reload
+# Run garbage collect, update and rebuild
+# Update Hardware Firmware
+run-fwup:
+    @sudo fwupdmgr refresh
+    @sudo fwupdmgr get-updates
+    @sudo fwupdmgr update
+all:
+    just upgrade-system
+    just garbage
