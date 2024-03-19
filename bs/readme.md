@@ -31,6 +31,7 @@ This folder is contains scripts and documentation.
     - under `repo` read/write. Click the main `repo` checkbox which will select all the sub settings.
     - Press `generate token` button
 - run `just flux [name of cluster]` in this directory
+    - example: `just flux spitfire`
     - this cluster name is used to target the proper directory in git (`cluster/cluster-name`)
     - Note that it will ask you for the PAT you created above.
 
