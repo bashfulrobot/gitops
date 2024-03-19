@@ -4,7 +4,22 @@ While bootstrapping a cluster can be BS, I just need to bootstrap.
 
 This folder is contains scripts and documentation.
 
+## ToDO
+
+- looking at this video:
+    - change repo to use a key vs a PAT
+- Secrets for the sysdig agent
+- Add sysdig agent values.
+- document Cilium bootstrap
+- Finish sysdig install and wiring
+
 ## Steps
+
+### Cilium
+
+- do this.
+
+### FluxCd
 
 - install the fluxcd & [just](https://github.com/casey/just
 ) cli tools
